@@ -4,19 +4,18 @@
   <meta charset="UTF-8">
   <title>Clock</title>
   <style>
-canvas {
-    position:absolute;
-    width:100%;
-    height:100%;
-} 
+    canvas {
+      position:absolute;
+      width:100%;
+      height:100%;
+    }
   </style>
 </head>
 <body>
-<canvas id="clock"></canvas>
-<script>
+  <canvas id="clock"></canvas>
+  <script>
 function getDayFrac() {
   var f = ((this.getHours() + ((this.getMinutes() + (this.getSeconds() / 60)) /60))/24);
-  //f = (this.getSeconds()/60);
   return(f);
 }
 
@@ -52,14 +51,13 @@ function mainLoop() {
   ctx.fillStyle = "#000000";
   ctx.fillRect(0,h/2,w,h/2);
 
-
   now = new Date();
   now.getDayFrac = getDayFrac;
 
   ctx.drawSun(Math.PI * 2 * now.getDayFrac() );
-  window.setTimeout(mainLoop, 1000/40);
+  window.setTimeout(mainLoop, 1000); // refresh every 1000ms
 }
 
-</script>
+  </script>
 </body>
 </html>
